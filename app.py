@@ -9,7 +9,7 @@ app = Flask(__name__)
 
 app.secret_key="1234"
 
-@app.route('/')
+@app.route('/', methods=['GET'])
 def homePage():
 
     return render_template('home.html')
