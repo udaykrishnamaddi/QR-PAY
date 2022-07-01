@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
+    <title>QR Code</title>
+</head>
+<body>
+    <form>
+        <div class="text-center">
+            <h1 class="text-danger d-inline m-3">Generated QR Code</h1>
+            <button class="btn btn-primary rounded m-3" style="position: absolute; right: 0;" formaction="/clearSession">Clear Session</button>
+        </div>
+        <div class="w-100 text-center m-3">
+            <img class="w-25 border border-dark" src="{{url_for('static', filename='/qrcodes/'+filename)}}" alt="Unavailable">
+        </div>
+        <div class="text-center m-3">
+            <button type="submit" class="btn btn-primary" formaction="/downloadQRCode/{{filename}}">Download QR Code</button>
+        </div>
+    </form>
+
+    <!-- Don't write below this line -->
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.5/dist/umd/popper.min.js" integrity="sha384-Xe+8cL9oJa6tN/veChSP7q+mnSPaj5Bcu9mPX5F5xIGE0DVittaqT5lorf0EI7Vk" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.min.js" integrity="sha384-kjU+l4N0Yf4ZOJErLsIcvOU2qSb74wXpOhqTvwVx3OElZRweTnQ6d31fXEoRD1Jy" crossorigin="anonymous"></script>
+
+</body>
+</html>
