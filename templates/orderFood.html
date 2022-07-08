@@ -4,12 +4,17 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/static/styles/orderFood.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
+    <link href="https://fonts.googleapis.com/css2?family=Arima:wght@200&family=Bangers&family=Charmonman:wght@700&family=Merriweather+Sans&family=Rouge+Script&family=Satisfy&family=Stick+No+Bills:wght@400;800&family=The+Nautigal:wght@400;700&display=swap" rel="stylesheet">        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
+
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
     <script src="../static/script/orderFood.js"></script>
     <title>Order Food</title>
 </head>
 <body>
-    
+    <h1 class="h11 text-center">~Don't be Upset</h1>
+    <h1 class="h22 text-center">Eat Some Sphaghett!</h1>
     <form action="/generateQRCode/{{stall_name}}" method="post">
 
         <div class="text-center mt-5">
@@ -18,32 +23,48 @@
             <input class="form-control-checkbox" type="checkbox" name="showpassword" onclick="showPassword()" />
             <label for="showpassword">Show Password</label>
         </div>
-
-        <table class="table text-center">
-            <thead>
-                <th scope="col">Item</th>
-                <th scope="col">Base Price</th>
-                <th scope="col">Quantity Selected</th>
-                <th scope="col">Sub Total</th>
-            </thead>
-            <tbody>
-                {% for i in range(no_of_food_items) %}
-                <tr>
+        <br>
+        <br>
+        <br>
+        
+        <div class="table-responsive">
+            <table class="table ">
+                <thead>
+                  <tr>
+                    <th scope="col">Item</th>
+                    <th scope="col">Base Price</th>
+                    <th scope="col">Quantity Selected</th>
+                    <th scope="col">Sub Total</th>
+                  </tr>
+                </thead>
+                <tbody>
+                    {% for i in range(no_of_food_items) %}
+                  <tr>
+                    <!-- <th scope="row">i</th> -->
                     <td id="item-{{i}}_name">{{food_items[i][0]}}</td>
-                    <td>
-                       <strong id="item-{{i}}_price">{{food_items[i][1]}}</strong>
-                    </td>
-                    <td>
-                        <button name="item-{{i}}" type="button" onclick="decrementQuantity(this)">-</button>
-                        <input class="text-center" type="number" name="{{food_items[i][0]}}" id="item-{{i}}" value="0" readonly />
-                        <button name="item-{{i}}" type="button" onclick="incrementQuantity(this)">+</button>
-                    </td>
-                    <td>
-                        <strong class="text-center" type="number" name="item-{{i}}_subTotal" id="item-{{i}}_subTotal">0</strong>
-                    </td>
-                </tr>
-                {% endfor %}
-                <tr>
+                        <td>
+                           <strong id="item-{{i}}_price">{{food_items[i][1]}}</strong>
+                        </td>
+                        <td>
+                            
+                            <button  name="item-{{i}}" type="button" onclick="decrementQuantity(this)">-</button>
+                            <input class="text-center w-25" type="number" name="{{food_items[i][0]}}" id="item-{{i}}" value="0" readonly />
+                            <button  name="item-{{i}}" type="button" onclick="incrementQuantity(this)">+</button>
+                            
+                        </td>
+
+
+                       
+
+
+
+                        <td>
+                            <strong class="text-center" type="number" name="item-{{i}}_subTotal" id="item-{{i}}_subTotal">0</strong>
+                        </td>
+                  </tr>
+                  {% endfor %}
+                  <tr>
+                    <!-- <th scope="row">i+1</th> -->
                     <td>
                         <h5><strong>Grand Total</strong></h5>
                     </td>
@@ -52,9 +73,12 @@
                     <td>
                         <h4><strong class="text-success" name="grandTotal" id="grandTotal">0</strong></h4>
                     </td>
-                </tr>
-            </tbody>
-        </table>
+                  </tr>
+                  
+                </tbody>
+              </table>
+        </div>
+        
 
         <button class="btn btn-success float-end m-3" type="submit">Generate QR</button>
 
